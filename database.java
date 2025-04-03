@@ -25,7 +25,6 @@ public class database {
     Scanner test = new Scanner(System.in);//asks you if you want to use the previous data set
     System.out.println("Use previous previous information? \"y\" for yes, and \"n\" for no (Don't use on first use)");
     String yesorno = test.nextLine();
-    test.close();
 if(true==yesorno.contains("n")){//tests if you entered yes or no, and if no, it writes to UserData
     try {
       FileWriter Write = new FileWriter("UserData.txt"); //creates a writer object
@@ -33,7 +32,9 @@ if(true==yesorno.contains("n")){//tests if you entered yes or no, and if no, it 
       Scanner in = new Scanner(System.in);//user input
       for(int i=1;i<=5;i++){
         System.out.println("put info for person " + i);//puts in data for 5 lines
+        if (i!=1){//skips a line cuz a bug happens if I don't
         in.nextLine();
+    }
         System.out.println("First, put in your first AND last name");
         String a = in.nextLine();
         System.out.println("Second, put in your age");
@@ -77,6 +78,7 @@ if(true==yesorno.contains("n")){//tests if you entered yes or no, and if no, it 
     }
     in.close();  
       write.close();
+      test.close();
         } catch (IOException e) {
       System.out.println("An error! :O");//bad message
       e.printStackTrace();
